@@ -1,0 +1,30 @@
+<% include('./layouts/layout') %>
+    <h2>Your Bookings</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Flight Number</th>
+                <th>Departure</th>
+                <th>Arrival</th>
+                <th>Date of Booking</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% bookings.forEach(booking => { %>
+                <tr>
+                    <td>
+                        <%= booking.flightId.flightNumber %>
+                    </td>
+                    <td>
+                        <%= booking.flightId.departure %>
+                    </td>
+                    <td>
+                        <%= booking.flightId.arrival %>
+                    </td>
+                    <td>
+                        <%= booking.date.toLocaleString() %>
+                    </td>
+                </tr>
+                <% }); %>
+        </tbody>
+    </table>

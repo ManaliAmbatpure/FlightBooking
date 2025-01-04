@@ -1,0 +1,45 @@
+<% include('./layouts/layout') %>
+    <h2>Available Flights</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Flight Number</th>
+                <th>Departure</th>
+                <th>Arrival</th>
+                <th>Departure Time</th>
+                <th>Arrival Time</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% flights.forEach(flight => { %>
+                <tr>
+                    <td>
+                        <%= flight.flightNumber %>
+                    </td>
+                    <td>
+                        <%= flight.departure %>
+                    </td>
+                    <td>
+                        <%= flight.arrival %>
+                    </td>
+                    <td>
+                        <%= flight.departureTime.toLocaleString() %>
+                    </td>
+                    <td>
+                        <%= flight.arrivalTime.toLocaleString() %>
+                    </td>
+                    <td>$
+                        <%= flight.price %>
+                    </td>
+                    <td>
+                        <form action="/bookings/book" method="POST">
+                            <input type="hidden" name="flightId" value="<%= flight._id %>">
+                            <button type="submit">Book</button>
+                        </form>
+                    </td>
+                </tr>
+                <% }); %>
+        </tbody>
+    </table>

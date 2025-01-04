@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Booking</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/book-flight">Book Flight</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Welcome to Flight Booking</h1>
+            <p>Find the best flights at affordable prices.</p>
+        </section>
+
+        <section class="flights">
+            <h2>Available Flights</h2>
+            <div class="flight-list">
+                <% flights.forEach(flight => { %>
+                    <div class="flight-item">
+                        <h3>
+                            <%= flight.name %>
+                        </h3>
+                        <p><strong>From:</strong>
+                            <%= flight.from %>
+                        </p>
+                        <p><strong>To:</strong>
+                            <%= flight.to %>
+                        </p>
+                        <p><strong>Price:</strong> $
+                            <%= flight.price %>
+                        </p>
+                        <a href="/book-flight/<%= flight._id %>">Book Now</a>
+                    </div>
+                    <% }) %>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Flight Booking. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
